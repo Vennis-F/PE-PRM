@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const CategoryGridTitle = ({ item, pressHandler }) => {
+const CategoryGridTitle = ({ item, pressHandler, currentActiveId }) => {
   //   const navigation = useNavigation<MealOverviewScreenNavigationProp>();
   //   const pressHandler = () => {
   //     navigation.navigate("MealOverview", { categoryId: item.id });
@@ -15,8 +15,15 @@ const CategoryGridTitle = ({ item, pressHandler }) => {
         style={[styles.container_inner]}
         onPress={pressHandler.bind(null, item.id)}
       >
-        <View>
-          <Text style={styles.title}>{item.title}</Text>
+        <View style={styles.active}>
+          <Text
+            style={[
+              styles.title,
+              currentActiveId === item.id ? styles.active : {},
+            ]}
+          >
+            {item.title}
+          </Text>
         </View>
       </Pressable>
     </View>
@@ -48,6 +55,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
     textTransform: "uppercase",
+  },
+  active: {
+    // borderBottomColor: "black",
+    // borderBottomWidth: 1,
+    color: "white",
   },
 });
 

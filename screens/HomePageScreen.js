@@ -29,7 +29,11 @@ export default function HomePageScreen() {
           data={CATEGORIES}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <CategoryGridTitle item={item} pressHandler={pressCategory} />
+            <CategoryGridTitle
+              item={item}
+              pressHandler={pressCategory}
+              currentActiveId={cateId}
+            />
           )}
           // numColumns={2}
           horizontal={true}
